@@ -13,8 +13,9 @@ function setup() {
 
 function draw() {
   translate(-400,-100)
-    drawTree(); 
+  drawTree(); 
   
+  addGUI();
 }
 
 function drawTree(){
@@ -47,4 +48,42 @@ function branch(len,theta){
    rect(0,0,len*10,len*10);
   }
   pop();
+}
+
+function addGUI(){
+
+  //add a button
+  button = createButton("plante");
+
+  button.addClass("button");
+
+  //Add the play button to the parent gui HTML element
+  button.parent("gui-container");
+  
+  //Adding a mouse pressed event listener to the button 
+  button.mousePressed(handleButtonPress); 
+
+}
+
+function handleButtonPress()
+{
+    if(food.length == 0 && !button.hasClass("inactive")){
+      food.push({
+          x:random(width),
+          y:random(height/2),
+          d:random(5,20)
+        });
+    }
+    
+    if(food.length > 0){
+      button.html("PLANTING");
+      button.addClass("inactive");
+    }
+  
+}
+
+function windowResized() {
+
+  resizeCanvas(windowWidth, windowHeight);
+
 }
