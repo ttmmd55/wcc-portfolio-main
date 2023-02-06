@@ -1,19 +1,75 @@
-const open = require("open");
-const express = require("express");
-const app = express();
-const http = require("http");
-const server = http.createServer(app);
-const port = 3000;
+const https = require('https');
+const JSSoup = require('jssoup').default;
+const fs = require('fs');
+const url = "https://en.wikipedia.org/wiki/Web_scraping"; // FIRST: find a url of a page you are interested in from wikipedia 
+const jsonPath = "./json/"; 
+const name = "webScraping";
 
-// Tell our Node.js Server to host our P5.JS sketch from the public folder.
-app.use(express.static("public"));
 
-// Setup Our Node.js server to listen to connections from chrome, and open chrome when it is ready
-server.listen(port, () => {
-  console.log(`listening on *: ${port}`);
-  //open in browser (only have one of the following 4 line uncommented)
-  open(`http://localhost:${port}`);//opens in your default browser
-  // open(`http://localhost:${port}`, { app: {name: "google chrome"} });//specify which browser
-  // open(`http://localhost:${port}`, { app: {name: "safari"} });
-  // open(`http://localhost:${port}`, { app: {name: "firefox"} });
+/*
+This web-scraping example is set up for working with wikipedia.If you want to adapt this
+to scrape another site you should go and inspect the site in the browser first, then adapt this. 
+*/
+
+//returns one large string of all text
+function getParagraphText(soupTag){
+    let paragraphs = soupTag.findAll('p');
+    let text = '';
+    for(let i = 0; i < paragraphs.length; i++){
+        text += paragraphs[i].getText();
+    }
+
+    return text;
+}
+
+//pass in Plain Old Javascript Object that's formatted as JSON
+function writeJSON(data){
+    try {
+        let path = jsonPath+name+".json";
+        fs.writeFileSync(path, JSON.stringify(data, null, 2), "utf8");
+        console.log("JSON file successfully saved");
+    } catch (error) {
+        console.log("An error has occurred ", error);
+    }
+}
+
+//create soup  
+function createSoup(document){
+    
+    let soup = new JSSoup(document);
+    let data = {
+        "name": name,
+        "url": url,
+        "content": {}
+    }; 
+
+    let main = soup.find('main');//only get the content from the main body of the page
+
+    data.content = {
+        "text": getParagraphText(main)
+    };
+        
+    //output json
+    writeJSON(data);
+
+}
+
+//Request the url
+https.get(url, (res) => {
+    console.log('statusCode:', res.statusCode);
+    console.log('headers:', res.headers);
+    
+    let document = [];
+
+    res.on('data', (chunk) => {
+        document.push(chunk);
+    }).on('end', () => {
+        document = Buffer.concat(document).toString();
+        // console.log(body);
+        createSoup(document);
+    });
+
+}).on('error', (e) => {
+    console.error(e);
 });
+

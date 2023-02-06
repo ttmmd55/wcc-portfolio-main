@@ -1,7 +1,17 @@
-# local-dev-static-server
+# Run Node Examples
  
- This is an example hosted so you can get the combined .gitignore for node & visual studio code. You can also just initialize your node.js repo with a Node gitignore then copy in the contents of your visual studio gitignore to the bottom of the file.
+ Before you first run make sure you  have an empty json folder.
+ 
+ In terminal shell run: 
+ 
+ npm install
+ 
+ 
+ Once the packages have installed run:
+ 
+ node app.js
+ 
+ 
+ Please see getting started with Node FAQ on this week's topic.
 
- Note this is not intended to be a github page. 
 
- In general, host any node scripts that are just for tooling on Github in a repo that is private if you have any sensitive content in there. 
