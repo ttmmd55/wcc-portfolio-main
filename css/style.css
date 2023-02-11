@@ -72,8 +72,16 @@ footer{
 /* want a different background image for each project? */
 /* try give each a tag a unique id in your HTML and then set different background images here*/
 /* EXAMPLE CSS: won't work if you just un-comment this:*/
-.flex-item a#1{
-    background-image: url(../assets/images/custom-image-name.jpeg); 
+.flex-item a#one{
+    background-image: url(../assets/images/term1.jpg); 
+}
+
+.flex-item a#weekone{
+    background-image: url(../assets/images/aromateec-S3eZsbiMklE-unsplash.jpg); 
+}
+
+.flex-item a#weektwo{
+    background-image: url(../assets/images/yoal-desurmont-jqgsM3B9Fpo-unsplash.jpg); 
 }
 
 
