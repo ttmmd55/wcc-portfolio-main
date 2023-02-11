@@ -1,7 +1,7 @@
 const https = require('https');
 const JSSoup = require('jssoup').default;
 const fs = require('fs');
-const url = "https://en.wikipedia.org/wiki/Web_scraping"; // FIRST: find a url of a page you are interested in from wikipedia 
+const url = "https://en.wikipedia.org/wiki/Blue_(English_group)"; // FIRST: find a url of a page you are interested in from wikipedia 
 const jsonPath = "./json/"; 
 const name = "webScraping";
 
