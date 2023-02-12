@@ -84,6 +84,9 @@ footer{
     background-image: url(../assets/images/yoal-desurmont-jqgsM3B9Fpo-unsplash.jpg); 
 }
 
+.flex-item a#weekthree{
+    background-image: url(../assets/images/adam-birkett-V4uS8SqCuNM-unsplash.jpg); 
+}
 
 .flex-item a:hover{
     color:#bbbbbb;
