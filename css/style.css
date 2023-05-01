@@ -77,19 +77,19 @@ footer{
 }
 
 .flex-item a#weekone{
-    background-image: url(../assets/images/aromateec-S3eZsbiMklE-unsplash.jpg); 
+    background-image: url(../assets/images/2.1.jpg); 
 }
 
 .flex-item a#weektwo{
-    background-image: url(../assets/images/yoal-desurmont-jqgsM3B9Fpo-unsplash.jpg); 
+    background-image: url(../assets/images/2.2.jpg); 
 }
 
 .flex-item a#weekthree{
-    background-image: url(../assets/images/adam-birkett-V4uS8SqCuNM-unsplash.jpg); 
+    background-image: url(../assets/images/2.3.jpg); 
 }
 
 .flex-item a#weekfour{
-    background-image: url(../assets/images/markus-spiske-hvSr_CVecVI-unsplash.jpg); 
+    background-image: url(../assets/images/2.4.jpg); 
 }
 
 .flex-item a:hover{
